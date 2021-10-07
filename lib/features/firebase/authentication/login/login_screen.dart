@@ -14,12 +14,22 @@ import 'components/sign_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key key}) : super(key: key);
-  
+
   Future<void> _signInWithGoogle(BuildContext context) async {
     try {
       final auth = Provider.of<AuthBase>(context, listen: false);
 
       await auth.signInWithGoogle();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> _signInWithFacebook(BuildContext context) async {
+    try {
+      final auth = Provider.of<AuthBase>(context, listen: false);
+
+      await auth.signInWithFacebook();
     } catch (e) {
       print(e.toString());
     }
@@ -95,7 +105,7 @@ class LoginScreen extends StatelessWidget {
               width: context.width * 0.175,
               color: appconstants.gray,
               assetName: 'assets/images/facebook-logo.png',
-              onPressed: () {},
+              onPressed: () => _signInWithFacebook(context),
             ),
           ],
         ),
