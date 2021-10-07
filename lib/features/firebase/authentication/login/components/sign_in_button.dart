@@ -5,11 +5,11 @@ import 'package:ecommerce/core/widget/custom_elevated_button.dart';
 
 class SignInButton extends CustomElevatedButton {
   SignInButton({
-    Key? key,
+    Key ?key,
     required double width,
     required String text,
     required Color color,
-     Color? textColor,
+     Color ?textColor,
     required VoidCallback onPressed,
   }) : super(
     width:width,

@@ -1,5 +1,9 @@
+// ignore_for_file: avoid_print
+
+import 'package:ecommerce/features/firebase/authentication/service/service.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/features/firebase/authentication/login/components/social_login_button.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/constants/color/color_theme.dart';
 import '../../../../core/constants/text/text_constant.dart';
@@ -10,6 +14,16 @@ import 'components/sign_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
+  
+  Future<void> _signInWithGoogle(BuildContext context) async {
+    try {
+      final auth = Provider.of<AuthBase>(context, listen: false);
+
+      await auth.signInWithGoogle();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +86,7 @@ class LoginScreen extends StatelessWidget {
               width: context.width * 0.175,
               color: appconstants.gray,
               assetName: 'assets/images/google-logo.png',
-              onPressed: () {},
+              onPressed: () => _signInWithGoogle(context),
             ),
             const SizedBox(
               width: 20,
