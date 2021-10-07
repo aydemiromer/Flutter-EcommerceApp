@@ -1,10 +1,11 @@
 
-import 'package:ecommerce/features/firebase/authentication/login/login_screen.dart';
-import 'package:ecommerce/features/firebase/authentication/service/service.dart';
-import 'package:ecommerce/features/home/screens/view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../firebase/authentication/login/login_screen.dart';
+import '../../firebase/authentication/service/service.dart';
+import 'view.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key key}) : super(key: key);

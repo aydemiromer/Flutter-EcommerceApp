@@ -11,6 +11,7 @@ class View extends StatelessWidget {
       await auth.signOut();
       //onSignout();
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
   }

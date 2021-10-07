@@ -1,6 +1,5 @@
-// ignore_for_file: avoid_print
-
 import 'package:ecommerce/features/firebase/authentication/service/service.dart';
+import 'package:ecommerce/product/widget/auth_form.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/features/firebase/authentication/login/components/social_login_button.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,6 @@ import '../../../../core/constants/text/text_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
 import 'components/input_field.dart';
 import 'components/password_field.dart';
-import 'components/sign_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -21,7 +19,7 @@ class LoginScreen extends StatelessWidget {
 
       await auth.signInWithGoogle();
     } catch (e) {
-      print(e.toString());
+     // print(e.toString());
     }
   }
 
@@ -31,7 +29,7 @@ class LoginScreen extends StatelessWidget {
 
       await auth.signInWithFacebook();
     } catch (e) {
-      print(e.toString());
+      //print(e.toString());
     }
   }
 
@@ -45,56 +43,57 @@ class LoginScreen extends StatelessWidget {
 
   SafeArea body(BuildContext context, AppColor appconstants) {
     return SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            height: context.height * 0.08,
-            alignment: Alignment.center,
-            child: const Text(
-              TextConstants.title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 50.0,
+      child: Padding(
+        padding: context.paddingNormal * 0.6,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const SizedBox(
+                height: 40,
               ),
-            ),
-          ),
-          textbuildmethod(appconstants),
-          buttonsmethod(context, appconstants),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              TextConstants.register,
-              style: TextStyle(
-                color: appconstants.textColor,
-                fontSize: 15,
+              Container(
+                height: context.height * 0.08,
+                alignment: Alignment.center,
+                child: const Text(
+                  TextConstants.title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 50.0,
+                  ),
+                ),
               ),
-            ),
+              const SizedBox(
+                height: 40,
+              ),
+              EmailSignInForm(),
+              /* textbuildmethod(appconstants),
+              const SizedBox(
+                height: 30,
+              ),*/
+              buttonsmethod(context, appconstants),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 
   Column buttonsmethod(BuildContext context, AppColor appconstants) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SignInButton(
-          width: context.width * 0.8,
-          color: appconstants.primaryorange,
-          textColor: appconstants.backgroundColor,
-          text: (TextConstants.login),
-          onPressed: () {},
-        ),
-        const SizedBox(
-          height: 10,
-        ),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SocialSignInButton(
               width: context.width * 0.175,
-              color: appconstants.gray,
+              color: AppColor.primaryorange,
               assetName: 'assets/images/google-logo.png',
               onPressed: () => _signInWithGoogle(context),
             ),
@@ -103,7 +102,7 @@ class LoginScreen extends StatelessWidget {
             ),
             SocialSignInButton(
               width: context.width * 0.175,
-              color: appconstants.gray,
+              color: AppColor.primaryorange,
               assetName: 'assets/images/facebook-logo.png',
               onPressed: () => _signInWithFacebook(context),
             ),
@@ -130,10 +129,10 @@ class LoginScreen extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: TextButton(
             onPressed: () {},
-            child: Text(
+            child: const Text(
               TextConstants.forgot,
               style: TextStyle(
-                color: appconstants.textColor,
+                color: AppColor.textColor,
                 fontSize: 15,
               ),
             ),

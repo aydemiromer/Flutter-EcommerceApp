@@ -1,9 +1,9 @@
-import 'package:ecommerce/features/home/screens/landing_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'features/firebase/authentication/service/service.dart';
+import 'features/home/screens/landing_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

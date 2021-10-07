@@ -14,11 +14,11 @@ class PasswordField extends StatelessWidget {
     return TextFieldContainer(
       child: TextFormField(
         obscureText: true,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           hintText: "Password",
           suffixIcon: Icon(
             Icons.visibility,
-            color: appconstants.primaryorange,
+            color: AppColor.primaryorange,
           ),
         ),
       ),
