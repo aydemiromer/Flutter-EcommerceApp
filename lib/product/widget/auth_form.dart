@@ -88,6 +88,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       const SizedBox(height: 8.0),
       _buildPasswordTextField(),
       const SizedBox(height: 8.0),
+     
       SignInButton(
         width: context.width * 0.8,
         color: AppColor.primaryorange,
@@ -95,7 +96,6 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         text: primaryText,
         onPressed: submitEnabled ? _submit : null,
       ),
-      
       const SizedBox(height: 8.0),
       TextButton(
           onPressed: !_isLoading ? _toggleFormType : null,

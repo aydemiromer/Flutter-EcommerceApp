@@ -1,5 +1,6 @@
 import 'package:ecommerce/features/firebase/authentication/service/service.dart';
 import 'package:ecommerce/product/widget/auth_form.dart';
+import 'package:ecommerce/product/widget/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/product/widget/social_login_button.dart';
 import 'package:provider/provider.dart';
@@ -65,10 +66,6 @@ class LoginScreen extends StatelessWidget {
                 height: 40,
               ),
               EmailSignInForm(),
-              /* textbuildmethod(appconstants),
-              const SizedBox(
-                height: 30,
-              ),*/
               buttonsmethod(context, appconstants),
               const SizedBox(
                 height: 30,
@@ -106,6 +103,14 @@ class LoginScreen extends StatelessWidget {
             ),
           ],
         ),
+        TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ResetPassword()),
+              );
+            },
+            child: const Text("Forget Password?")),
       ],
     );
   }

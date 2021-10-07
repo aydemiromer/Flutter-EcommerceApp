@@ -4,8 +4,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class AuthBase {
   User get currentUser;
-  Stream<User>  authStateChanges();
+  Stream<User> authStateChanges();
 
+  sendPassword(String email);
   Future<User> signInWithGoogle();
   Future<User> signInWithFacebook();
   Future<User> createUserWithEmailandPassword(String email, String password);
@@ -17,7 +18,7 @@ class Auth implements AuthBase {
   final _fAuth = FirebaseAuth.instance;
 
   @override
-  Stream<User>  authStateChanges() => _fAuth.authStateChanges();
+  Stream<User> authStateChanges() => _fAuth.authStateChanges();
 
   @override
   User get currentUser => _fAuth.currentUser;
@@ -33,8 +34,14 @@ class Auth implements AuthBase {
   }
 
   @override
-  Future<User> signInWithEmailandPassword(
-      String email, String password) async {
+   sendPassword(String email) async {
+    await _fAuth.sendPasswordResetEmail(
+      email: email,
+    );
+  }
+
+  @override
+  Future<User> signInWithEmailandPassword(String email, String password) async {
     final userCredential = await _fAuth.signInWithCredential(
       EmailAuthProvider.credential(
         email: email,
@@ -46,7 +53,6 @@ class Auth implements AuthBase {
 
   @override
   Future<User> signInWithFacebook() async {
-    
     final fb = FacebookLogin();
     final response = await fb.logIn(permissions: [
       FacebookPermission.publicProfile,
@@ -106,7 +112,7 @@ class Auth implements AuthBase {
     await googleSignIn.signOut();
     final facebookLogin = FacebookLogin();
     await facebookLogin.logOut();
-    
+
     await _fAuth.signOut();
   }
 }
