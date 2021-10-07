@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../core/constants/color/color_theme.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../core/constants/enums/enums.dart';
 import '../../core/constants/validator/validators.dart';
-import '../../features/firebase/authentication/login/components/sign_in_button.dart';
+import 'sign_in_button.dart';
 import '../../features/firebase/authentication/service/service.dart';
 import 'show_alert_dialog.dart';
 
@@ -96,11 +95,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         text: primaryText,
         onPressed: submitEnabled ? _submit : null,
       ),
-      /*FormSubmitButton(
-        onPressed: submitEnabled ? _submit : null,
-        text: primaryText,
-        width: 40.0,
-      ),*/
+      
       const SizedBox(height: 8.0),
       TextButton(
           onPressed: !_isLoading ? _toggleFormType : null,

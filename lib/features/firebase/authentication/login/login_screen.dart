@@ -1,14 +1,12 @@
 import 'package:ecommerce/features/firebase/authentication/service/service.dart';
 import 'package:ecommerce/product/widget/auth_form.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/features/firebase/authentication/login/components/social_login_button.dart';
+import 'package:ecommerce/product/widget/social_login_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/constants/color/color_theme.dart';
 import '../../../../core/constants/text/text_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
-import 'components/input_field.dart';
-import 'components/password_field.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -19,7 +17,7 @@ class LoginScreen extends StatelessWidget {
 
       await auth.signInWithGoogle();
     } catch (e) {
-     // print(e.toString());
+      // print(e.toString());
     }
   }
 
@@ -107,36 +105,6 @@ class LoginScreen extends StatelessWidget {
               onPressed: () => _signInWithFacebook(context),
             ),
           ],
-        ),
-      ],
-    );
-  }
-
-  Column textbuildmethod(AppColor appconstants) {
-    return Column(
-      children: [
-        InputField(
-          appconstants: appconstants,
-          hintText: "Email",
-        ),
-        const SizedBox(
-          height: 25,
-        ),
-        PasswordField(
-          appconstants: appconstants,
-        ),
-        Container(
-          alignment: Alignment.centerRight,
-          child: TextButton(
-            onPressed: () {},
-            child: const Text(
-              TextConstants.forgot,
-              style: TextStyle(
-                color: AppColor.textColor,
-                fontSize: 15,
-              ),
-            ),
-          ),
         ),
       ],
     );
