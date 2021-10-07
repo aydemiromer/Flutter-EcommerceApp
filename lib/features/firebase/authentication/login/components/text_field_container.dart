@@ -4,8 +4,8 @@ import 'package:ecommerce/core/extensions/context_extension.dart';
 class TextFieldContainer extends StatelessWidget {
   final Widget child;
   const TextFieldContainer({
-    Key? key,
-    required this.child,
+    Key key,
+    @required this.child,
   }) : super(key: key);
 
   @override

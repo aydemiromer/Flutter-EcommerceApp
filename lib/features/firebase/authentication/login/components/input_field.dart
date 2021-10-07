@@ -5,9 +5,9 @@ import 'package:ecommerce/features/firebase/authentication/login/components/text
 class InputField extends StatelessWidget {
   final String hintText;
   const InputField({
-    Key ?key,
-    required this.appconstants,
-    required this.hintText,
+    Key key,
+    @required this.appconstants,
+    @required this.hintText,
   }) : super(key: key);
 
   final AppColor appconstants;

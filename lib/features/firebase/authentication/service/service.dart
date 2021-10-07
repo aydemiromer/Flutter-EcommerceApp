@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class AuthBase {
-  User? get currentUser;
-  Stream<User>? get authStateChanges;
+  User get currentUser;
+  Stream<User>  authStateChanges();
 
-  Future<User?> signInWithGoogle();
+  Future<User> signInWithGoogle();
   Future<User> signInWithFacebook();
-  Future<User?> createUserWithEmailandPassword(String email, String password);
-  Future<User?> signInWithEmailandPassword(String email, String password);
+  Future<User> createUserWithEmailandPassword(String email, String password);
+  Future<User> signInWithEmailandPassword(String email, String password);
   Future<void> signOut();
 }
 
@@ -16,18 +16,16 @@ class Auth implements AuthBase {
   final _fAuth = FirebaseAuth.instance;
 
   @override
-  Stream<User>? get authStateChanges {
-    _fAuth.authStateChanges();
-  }
+  Stream<User>  authStateChanges() => _fAuth.authStateChanges();
 
   @override
-  User? get currentUser {
+  User get currentUser {
     _fAuth.currentUser;
     
   }
 
   @override
-  Future<User?> createUserWithEmailandPassword(
+  Future<User> createUserWithEmailandPassword(
       String email, String password) async {
     final userCredential = await _fAuth.createUserWithEmailAndPassword(
       email: email,
@@ -37,7 +35,7 @@ class Auth implements AuthBase {
   }
 
   @override
-  Future<User?> signInWithEmailandPassword(
+  Future<User> signInWithEmailandPassword(
       String email, String password) async {
     final userCredential = await _fAuth.signInWithCredential(
       EmailAuthProvider.credential(
@@ -55,7 +53,7 @@ class Auth implements AuthBase {
   }
 
   @override
-  Future<User?> signInWithGoogle() async {
+  Future<User> signInWithGoogle() async {
     final googleSignIn = GoogleSignIn();
     final googleUser = await googleSignIn.signIn();
     if (googleUser != null) {

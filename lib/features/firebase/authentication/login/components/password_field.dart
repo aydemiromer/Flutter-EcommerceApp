@@ -4,8 +4,8 @@ import 'package:ecommerce/features/firebase/authentication/login/components/text
 
 class PasswordField extends StatelessWidget {
   const PasswordField({
-    Key ?key,
-    required this.appconstants,
+    Key key,
+    @required this.appconstants,
   }) : super(key: key);
   final AppColor appconstants;
 

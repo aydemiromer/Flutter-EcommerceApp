@@ -9,13 +9,13 @@ class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const CustomElevatedButton(
-      {Key ?key,
-      required this.color,
+      {Key key,
+      @required this.color,
       this.height = 60.0,
-      required this.width,
+      @required this.width,
       this.borderRadius = 2.0,
-      required this.onPressed,
-      required this.child})
+      @required this.onPressed,
+      @required this.child})
       : super(key: key);
 
   @override

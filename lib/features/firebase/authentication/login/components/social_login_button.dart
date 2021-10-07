@@ -3,11 +3,11 @@ import 'package:ecommerce/core/widget/custom_elevated_button.dart';
 
 class SocialSignInButton extends CustomElevatedButton {
   SocialSignInButton({
-    Key? key,
-    required double width,
-    required String assetName,
-    required Color color,
-    required VoidCallback onPressed,
+    Key key,
+    @required double width,
+    @required String assetName,
+    @required Color color,
+    @required VoidCallback onPressed,
   }) : super(
           width: width,
           key: key,

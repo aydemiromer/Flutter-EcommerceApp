@@ -13,7 +13,7 @@ import 'components/password_field.dart';
 import 'components/sign_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key key}) : super(key: key);
   
   Future<void> _signInWithGoogle(BuildContext context) async {
     try {

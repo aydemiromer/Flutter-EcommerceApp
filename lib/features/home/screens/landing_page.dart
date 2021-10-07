@@ -7,16 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({Key? key}) : super(key: key);
+  const LandingPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthBase>(context, listen: false);
     return StreamBuilder<User>(
-      stream: auth.authStateChanges,
+      stream: auth.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
-          final User? user = snapshot.data!;
+          final User user = snapshot.data;
           if (user == null) {
             return const LoginScreen();
           }
