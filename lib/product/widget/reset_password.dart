@@ -1,3 +1,4 @@
+import 'package:ecommerce/features/firebase/authentication/service/service.dart';
 import 'package:ecommerce/product/widget/sign_in_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -47,9 +48,9 @@ class _ResetPasswordState extends State<ResetPassword> {
               width: 100,
               text: "Send",
               color: AppColor.primaryorange,
-              onPressed: () {
-                FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
-              })
+              onPressed: () => Auth().sendPassword(_email)
+              //FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
+              )
         ],
       ),
     );

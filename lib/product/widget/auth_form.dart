@@ -1,3 +1,4 @@
+import 'package:ecommerce/product/widget/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/color/color_theme.dart';
@@ -40,6 +41,9 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       } else {
         await auth.createUserWithEmailandPassword(_email, _password);
       }
+      {
+        await auth.sendPassword(_email);
+      }
       Navigator.of(context).pop();
     } catch (e) {
       showAlertDialog(
@@ -80,6 +84,8 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
     final secondaryText = _formType == EmailSignInFormType.signIn
         ? 'Need an account? Register'
         : 'Have an account? Sign in';
+    final thirdText =
+        _formType == EmailSignInFormType.signIn ? 'Forget Password?' : '';
     bool submitEnabled = widget.emailValidator.isValid(_email) &&
         widget.passwordValidator.isValid(_password);
 
@@ -88,7 +94,19 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       const SizedBox(height: 8.0),
       _buildPasswordTextField(),
       const SizedBox(height: 8.0),
-     
+      Container(
+        alignment: Alignment.centerRight,
+        child: TextButton(
+            onPressed: () {
+              !_isLoading ? _toggleFormType : null;
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ResetPassword()),
+              );
+            },
+            child: Text(thirdText)),
+      ),
+      const SizedBox(height: 8.0),
       SignInButton(
         width: context.width * 0.8,
         color: AppColor.primaryorange,
@@ -99,7 +117,9 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       const SizedBox(height: 8.0),
       TextButton(
           onPressed: !_isLoading ? _toggleFormType : null,
-          child: Text(secondaryText)),
+          child: Column(
+            children: [Text(secondaryText)],
+          )),
     ];
   }
 

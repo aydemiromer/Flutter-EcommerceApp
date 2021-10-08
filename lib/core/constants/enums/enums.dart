@@ -1,1 +1,1 @@
-enum EmailSignInFormType { signIn, register }
+enum EmailSignInFormType { signIn, register , reset }

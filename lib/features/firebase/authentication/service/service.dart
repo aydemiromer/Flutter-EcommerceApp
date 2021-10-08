@@ -6,7 +6,7 @@ abstract class AuthBase {
   User get currentUser;
   Stream<User> authStateChanges();
 
-  sendPassword(String email);
+  Future<User> sendPassword(String email);
   Future<User> signInWithGoogle();
   Future<User> signInWithFacebook();
   Future<User> createUserWithEmailandPassword(String email, String password);
@@ -34,10 +34,11 @@ class Auth implements AuthBase {
   }
 
   @override
-   sendPassword(String email) async {
-    await _fAuth.sendPasswordResetEmail(
+  Future<User> sendPassword(String email) async {
+    final userCredential = await _fAuth.sendPasswordResetEmail(
       email: email,
     );
+  
   }
 
   @override
